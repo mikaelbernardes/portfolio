@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
+import { Header } from '@/layout/Header';
 
 const IbmPlexMono = IBM_Plex_Mono({
 	subsets: ['cyrillic'],
@@ -19,7 +20,15 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={IbmPlexMono.className}>{children}</body>
+			<body 
+				className={`
+					${IbmPlexMono.className}
+					bg-B100
+				`}
+			>
+				<Header />
+				{children}
+			</body>
 		</html>
 	);
 }
