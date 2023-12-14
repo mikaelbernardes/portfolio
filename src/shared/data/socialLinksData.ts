@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp   } from 'react-icons/fa';
 
-interface LinksDataProps {
+interface SocialLinksDataProps {
     img: any,
     alt: string,
     link: string
 }
 
-export const linksData: LinksDataProps[] = [
+export const socialLinksData: SocialLinksDataProps[] = [
 	{
 		img: FaGithub,
 		alt: 'Ícone do Github',
