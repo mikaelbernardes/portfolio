@@ -14,7 +14,7 @@ function Header() {
 
 	return(
 		<header className='w-full h-16 px-3 flex items-center justify-between bg-B100 border-b-2 border-P100 shadow-lg transition-all'>
-			<h1 className='text-T300 font-bold text-sm'>Mikael Bernardes</h1>
+			<h1 className='text-T300 font-bold text-sm md:text-lg'>Mikael Bernardes</h1>
 			<div className="cursor-pointer">
 				{
 					menuOpen ?
