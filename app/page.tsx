@@ -1,4 +1,6 @@
 'use client';
+import { LinkPost } from '@/shared/components/LinkPost';
+import { PostsLinksData } from '@/shared/data/postsLinksData';
 import { socialLinksData } from '@/shared/data/socialLinksData';
 import React from 'react';
 
@@ -23,9 +25,20 @@ export default function Home() {
 					}
 				</div>
 			</main>
-			<section className="mt-6">
-				<p className='text-T300 text-sm px-4'>Blog (Recent Posts)</p>
-				
+			<section className="mt-6 px-8 md:px-16">
+				<p className='text-T300 text-sm md:text-lg'>Blog (Recent Posts)</p>
+				<div className="flex flex-col gap-8 mt-6">
+					{
+						PostsLinksData.map((post, index) => (
+							<LinkPost 
+								key={index}
+								title={post.title}
+								createdAt={post.createdAt}
+								description={post.description}
+							/>
+						))
+					}
+				</div>
 			</section>
 		</>
 	);

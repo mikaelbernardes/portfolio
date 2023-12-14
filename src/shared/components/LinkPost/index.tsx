@@ -8,10 +8,10 @@ interface LinkPostProps {
 function LinkPost({ title, createdAt, description}: LinkPostProps) {
 
 	return(
-		<div className="w-full h-20">
-			<h2 className="text-P100 font-bold">{title}</h2>
-			<span className="text-xs text-T100">{createdAt}</span>
-			<p className="text-xs text-T300">{description}</p>
+		<div className="w-full h-fit flex flex-col gap-1">
+			<h2 className="text-P100 font-bold text-base md:text-2xl">{title}</h2>
+			<span className="text-[8px] text-T100 md:text-sm">{createdAt}</span>
+			<p className="text-[10px] text-T300 md:text-base">{description}</p>
 		</div>
 	);
 }
