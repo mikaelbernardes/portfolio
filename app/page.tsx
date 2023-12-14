@@ -35,6 +35,7 @@ export default function Home() {
 								title={post.title}
 								createdAt={post.createdAt}
 								description={post.description}
+								route={index + 1}
 							/>
 						))
 					}
