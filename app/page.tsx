@@ -1,10 +1,14 @@
 'use client';
 import { LinkPost } from '@/shared/components/LinkPost';
-import { PostsLinksData } from '@/shared/data/postsLinksData';
 import { socialLinksData } from '@/shared/data/socialLinksData';
+import { PostProps } from '@/types/posts';
 import React from 'react';
+import { getPosts } from './_services/notion';
 
-export default function Home() {
+export default async function Home() {
+	
+	const posts = await getPosts();
+
 	return (
 		<>
 			<main className='w-full h-fit text-xs font-light text-T100 flex flex-wrap px-8 md:px-16 mt-6 md:text-lg border-P100 pb-6 border-b-2'>
@@ -27,19 +31,17 @@ export default function Home() {
 			</main>
 			<section className="mt-6 px-8 md:px-16">
 				<p className='text-T300 text-sm md:text-lg'>Blog (Recent Posts)</p>
-				<div className="flex flex-col gap-8 mt-6">
-					{
-						PostsLinksData.map((post, index) => (
-							<LinkPost 
-								key={index}
-								title={post.title}
-								createdAt={post.createdAt}
-								description={post.description}
-								route={index + 1}
-							/>
-						))
-					}
-				</div>
+				<ul className="flex flex-col gap-6 mt-6">
+					{posts.map((post: PostProps) => (
+						<LinkPost  
+							title={post.title}
+							createdAt={new Intl.DateTimeFormat('en-US').format(new Date(post.createdAt))}
+							slug={post.slug}
+							description='Esse é um exemplo de descrição de um post'
+							tags={post.tags}
+						/>
+					))}
+				</ul>
 			</section>
 		</>
 	);

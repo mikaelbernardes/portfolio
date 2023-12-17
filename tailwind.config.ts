@@ -11,7 +11,8 @@ const config: Config = {
 			B300: '#868D98',
 			T100: '#BDC3CB',
 			T300: '#E1E8F0',
-			P100: '#7288FF'
+			P100: '#7288FF',
+			Back: '#662079'
 		}
 	},
 	plugins: [],

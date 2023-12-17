@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { LinkPost } from '@/shared/components/LinkPost';
 import { getPosts } from '../_services/notion';
-
-interface PostProps {
-  id: string;
-  title: string;
-  slug: string;
-  createdAt: string;
-}
+import { PostProps } from '@/types/posts';
 
 export default async function PostsHome() {
 	try {
@@ -25,6 +19,7 @@ export default async function PostsHome() {
 							createdAt={new Intl.DateTimeFormat('en-US').format(new Date(post.createdAt))}
 							slug={post.slug}
 							description='Esse é um exemplo de descrição de um post'
+							tags={post.tags}
 						/>
 					))}
 				</ul>
