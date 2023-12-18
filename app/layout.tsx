@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/layout/Header';
+import { Footer } from '@/layout/Footer';
 
 const IbmPlexMono = IBM_Plex_Mono({
 	subsets: ['cyrillic'],
@@ -28,6 +29,7 @@ export default function RootLayout({
 			>
 				<Header />
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);

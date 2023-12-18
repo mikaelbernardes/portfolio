@@ -4,7 +4,7 @@ import { FaClockRotateLeft } from 'react-icons/fa6';
 interface LinkPostProps {
   title: string;
   createdAt: string;
-  description: string;
+  description?: string;
   slug: string;
   tags: string[];
 }

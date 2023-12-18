@@ -41,7 +41,6 @@ export default async function Home() {
 								title={post.title}
 								createdAt={new Intl.DateTimeFormat('en-US').format(new Date(post.createdAt))}
 								slug={post.slug}
-								description='Esse é um exemplo de descrição de um post'
 								tags={post.tags}
 							/>
 						))}
