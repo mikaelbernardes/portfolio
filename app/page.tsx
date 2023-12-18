@@ -31,16 +31,20 @@ export default async function Home() {
 			</main>
 			<section className="mt-6 px-8 md:px-16">
 				<p className='text-T300 text-sm md:text-lg'>Blog (Recent Posts)</p>
-				<ul className="flex flex-col gap-6 mt-6">
-					{posts.map((post: PostProps) => (
-						<LinkPost  
-							title={post.title}
-							createdAt={new Intl.DateTimeFormat('en-US').format(new Date(post.createdAt))}
-							slug={post.slug}
-							description='Esse é um exemplo de descrição de um post'
-							tags={post.tags}
-						/>
-					))}
+				<ul className="flex flex-col gap-6 mt-6 mb-12">
+					{posts
+						.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) // Ordena os posts por data de criação
+						.slice(0, 3) // Pega os últimos 3 posts
+						.map((post: PostProps) => (
+							<LinkPost
+								key={post.id}
+								title={post.title}
+								createdAt={new Intl.DateTimeFormat('en-US').format(new Date(post.createdAt))}
+								slug={post.slug}
+								description='Esse é um exemplo de descrição de um post'
+								tags={post.tags}
+							/>
+						))}
 				</ul>
 			</section>
 		</>

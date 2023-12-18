@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+'use client';
 import { LinkPost } from '@/shared/components/LinkPost';
 import { getPosts } from '../_services/notion';
 import { PostProps } from '@/types/posts';
@@ -14,7 +15,8 @@ export default async function PostsHome() {
 				<p>blog</p>
 				<ul>
 					{postszinhos.map((post: PostProps) => (
-						<LinkPost  
+						<LinkPost
+							key={post.id}
 							title={post.title}
 							createdAt={new Intl.DateTimeFormat('en-US').format(new Date(post.createdAt))}
 							slug={post.slug}
