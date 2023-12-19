@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-'use client';
+
 import { LinkPost } from '@/shared/components/LinkPost';
 import { getPosts } from '../_services/notion';
 import { PostProps } from '@/types/posts';
@@ -11,8 +11,8 @@ export default async function PostsHome() {
 		console.log(postszinhos);
 
 		return (
-			<>
-				<p>blog</p>
+			<main className='w-full h-fit text-xs font-light text-T100 flex flex-col px-8 md:px-16 mt-6 md:text-lg pb-6'>
+				<p>Posts</p>
 				<ul>
 					{postszinhos.map((post: PostProps) => (
 						<LinkPost
@@ -24,7 +24,7 @@ export default async function PostsHome() {
 						/>
 					))}
 				</ul>
-			</>
+			</main>
 		);
 	} catch (error) {
 		console.error('Error fetching posts:', error);

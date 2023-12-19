@@ -4,6 +4,7 @@ import { socialLinksData } from '@/shared/data/socialLinksData';
 import { PostProps } from '@/types/posts';
 import React from 'react';
 import { getPosts } from './_services/notion';
+import Link from 'next/link';
 
 export default async function Home() {
 	
@@ -16,7 +17,7 @@ export default async function Home() {
 				<div className="flex gap-4 mt-4 pl-4">
 					{
 						socialLinksData.map((link, index) => (
-							<a 
+							<Link
 								href={link.link} 
 								about={link.alt} 
 								key={index} 
@@ -24,7 +25,7 @@ export default async function Home() {
 								target='_blank'
 							>
 								{React.createElement(link.img)}
-							</a>
+							</Link>
 						))
 					}
 				</div>
@@ -46,6 +47,9 @@ export default async function Home() {
 						))}
 				</ul>
 			</section>
+			<div className="w-full flex items-center justify-center">
+				<Link className='text-sm text-P100 uppercase animate-pulse' href={'/posts'}>clique para ver mais →</Link>
+			</div>
 		</>
 	);
 }
