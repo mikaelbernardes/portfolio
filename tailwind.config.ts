@@ -9,6 +9,7 @@ const config: Config = {
 		extend: {
 			colors: {
 				B100: '#1E1E1E',
+				B200: '#232B39',
 				B300: '#868D98',
 				T100: '#BDC3CB',
 				T300: '#E1E8F0',

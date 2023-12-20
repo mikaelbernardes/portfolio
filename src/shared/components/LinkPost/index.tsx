@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FaClockRotateLeft } from 'react-icons/fa6';
+import { tagColors } from './tagColors';
 
 interface LinkPostProps {
   title: string;
@@ -23,7 +24,7 @@ function LinkPost({ title, createdAt, description, slug, tags }: LinkPostProps) 
 				{tags.map((tag, index) => (
 					<p
 						key={index}
-						className={`text-[8px] rounded-sm px-1 text-T300 ${tag === '#front' ? 'bg-P100' : tag === '#back' ? 'bg-Back' : ''}`}
+						className={`text-[8px] flex items-center h-4 rounded-sm px-1 text-T300 ${tagColors[tag] || ''}`}
 					>
 						{tag}
 					</p>

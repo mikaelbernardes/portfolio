@@ -9,6 +9,7 @@ import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { CSSProperties } from 'react';
+import React from 'react';
 
 export default async function Post({
 	params,
@@ -21,7 +22,7 @@ export default async function Post({
 
 	const renderers = {
 		strong: ({ node, children }: any) => {
-			return <span className='text-T300 font-bold'>{children}</span>;
+			return <span className='text-P100 font-bold'>{children}</span>;
 		},
 		code: ({ node, className, children, ...props }: any) => {
 			const match = /language-(\w+)/.exec(className || '');
