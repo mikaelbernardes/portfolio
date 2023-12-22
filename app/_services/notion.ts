@@ -1,10 +1,13 @@
-// 'use server';
+
 import { Client } from '@notionhq/client';
 import { NotionDatabaseResponse } from './types';
 import { NotionToMarkdown } from 'notion-to-md';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
-const DATABASE_ID = '75fd422eb8bf44a888aa7f157b373062';
+const DATABASE_ID = process.env.DATABASE_ID || '';
 
 export async function getPosts() {
 	const response = await notion.databases.query({

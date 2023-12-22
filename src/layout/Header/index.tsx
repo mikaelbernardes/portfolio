@@ -59,7 +59,7 @@ function Header() {
 						/>
 				}
 			</div>
-			<nav className="flex">
+			<nav className="hidden md:flex">
 				<ul className="list-none flex gap-8 font-light">
 					{
 						navLinks.map((link, index) => (
