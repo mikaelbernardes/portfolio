@@ -24,7 +24,7 @@ export default function RootLayout({
 			<body 
 				className={`
 					${IbmPlexMono.className}
-					bg-B100 md:px-40
+					bg-B100 sm:px-16 md:px-28 lg:px-52 xl:px-60 2xl:px-72
 				`}
 			>
 				<Header />

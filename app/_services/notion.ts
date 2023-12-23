@@ -18,10 +18,9 @@ export async function getPosts() {
 	return typedResponse.results.map((post) => {
 		const title = post.properties.title?.title?.[0]?.text.content || 'Untitled';
 		const slug = post.properties.slug?.rich_text?.[0]?.plain_text || 'no-slug';
-		const tags =
-      post.properties.tags && post.properties.tags.multi_select
-      	? post.properties.tags.multi_select.map((tag) => tag.name)
-      	: [''];
+		const tags = post.properties.tags && post.properties.tags.multi_select
+      		? post.properties.tags.multi_select.map((tag) => tag.name)
+      		: [''];
 
 		return {
 			id: post.id,

@@ -1,4 +1,4 @@
-'use client';
+'use server';
 import { LinkPost } from '@/shared/components/LinkPost';
 import { socialLinksData } from '@/shared/data/socialLinksData';
 import { PostProps } from '@/types/posts';
@@ -39,7 +39,7 @@ export default async function Home() {
 				<ul className="flex flex-col gap-6 mt-6 mb-12">
 					{posts
 						.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-						.slice(0, 3) // Pega os últimos 3 posts
+						.slice(0, 3)
 						.map((post: PostProps) => (
 							<LinkPost
 								key={post.id}

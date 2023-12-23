@@ -1,25 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-'use client';
+'use server';
 import { LinkPost } from '@/shared/components/LinkPost';
-import { getPosts } from '../_services/notion';
 import { PostProps } from '@/types/posts';
-import { useEffect, useState } from 'react';
+import { getPosts } from '../_services/notion';
 
 export default async function PostsHome() {
-	const [posts, setPosts] = useState<PostProps[]>([]);
 
-	useEffect(() => {
-	  const fetchData = async () => {
-			try {
-		  const data = await getPosts();
-		  setPosts(data);
-			} catch (error) {
-		  console.error(error);
-			}
-	  };
-  
-	  fetchData();
-	}, []);
+	const posts = await getPosts();
+
 	return (
 		<main className='w-full h-fit text-xs font-light text-T100 flex flex-col px-4 md:px-16 mt-6 md:text-lg pb-6 gap-5'>
 			<div className='flex items-center gap-4 md:gap-10'>
