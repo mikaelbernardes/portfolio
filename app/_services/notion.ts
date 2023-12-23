@@ -1,4 +1,3 @@
-
 import { Client } from '@notionhq/client';
 import { NotionDatabaseResponse } from './types';
 import { NotionToMarkdown } from 'notion-to-md';
@@ -20,9 +19,9 @@ export async function getPosts() {
 		const title = post.properties.title?.title?.[0]?.text.content || 'Untitled';
 		const slug = post.properties.slug?.rich_text?.[0]?.plain_text || 'no-slug';
 		const tags =
-			post.properties.tags && post.properties.tags.multi_select
-				? post.properties.tags.multi_select.map((tag) => tag.name)
-				: [''];
+      post.properties.tags && post.properties.tags.multi_select
+      	? post.properties.tags.multi_select.map((tag) => tag.name)
+      	: [''];
 
 		return {
 			id: post.id,
@@ -59,7 +58,6 @@ export async function getPost(slug: string) {
 	const typedResponse = response as unknown as NotionDatabaseResponse;
 
 	console.log(pageId);
-	
 
 	return {
 		title: typedResponse.results[0].properties.title.title[0].plain_text,

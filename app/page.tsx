@@ -9,11 +9,15 @@ import Link from 'next/link';
 export default async function Home() {
 	
 	const posts = await getPosts();
+	const currentYear = new Date().getFullYear();
+	const currentMonth = new Date().getMonth() + 1;
+
+	const yearsOfExperience = currentYear - 2021 - (currentMonth < 4 ? 1 : 0);
 
 	return (
 		<>
 			<main className='w-full h-fit text-xs font-light text-T100 flex flex-wrap px-8 md:px-16 mt-6 md:text-lg border-P100 pb-6 border-b-2'>
-				<p>Hi, I'm <span className='text-P100 font-semibold'>Mikael Bernardes</span>, a <span className='text-P100 font-semibold'>frontend developer</span> specializing in <span className='text-P100 font-semibold'>ReactJS</span>, with more than <span className='text-P100 font-semibold'>2 years of experience</span> in the web development area. My portfolio is not only a showcase of my work, but also a space to share insights through my blog. My goal is to become a senior frontend developer, contributing to innovative projects globally. In addition to code, I dedicate time to classical guitar, believing that creativity transcends programming and music.</p>
+				<p>Hi, I'm <span className='text-P100 font-semibold'>Mikael Bernardes</span>, a <span className='text-P100 font-semibold'>frontend developer</span> specializing in <span className='text-P100 font-semibold'>ReactJS</span>, with more than <span className='text-P100 font-semibold'>{yearsOfExperience} years of experience</span> in the web development area. My portfolio is not only a showcase of my work, but also a space to share insights through my blog. My goal is to become a senior frontend developer, contributing to innovative projects globally. In addition to code, I dedicate time to classical guitar, believing that creativity transcends programming and music.</p>
 				<div className="flex gap-4 mt-4 pl-4">
 					{
 						socialLinksData.map((link, index) => (
@@ -34,7 +38,7 @@ export default async function Home() {
 				<p className='text-T300 text-sm md:text-lg'>Blog (Recent Posts)</p>
 				<ul className="flex flex-col gap-6 mt-6 mb-12">
 					{posts
-						.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) // Ordena os posts por data de criação
+						.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
 						.slice(0, 3) // Pega os últimos 3 posts
 						.map((post: PostProps) => (
 							<LinkPost

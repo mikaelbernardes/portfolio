@@ -3,23 +3,30 @@
 import { LinkPost } from '@/shared/components/LinkPost';
 import { getPosts } from '../_services/notion';
 import { PostProps } from '@/types/posts';
+import { useEffect, useState } from 'react';
 
 export default async function PostsHome() {
-	let allPosts: PostProps[] = [];
+	const [posts, setPosts] = useState<PostProps[]>([]);
 
-	try {
-		allPosts = await getPosts();
-	} catch (error) {
-		console.error('Error fetching posts:', error);
-	}
-
+	useEffect(() => {
+	  const fetchData = async () => {
+			try {
+		  const data = await getPosts();
+		  setPosts(data);
+			} catch (error) {
+		  console.error(error);
+			}
+	  };
+  
+	  fetchData();
+	}, []);
 	return (
 		<main className='w-full h-fit text-xs font-light text-T100 flex flex-col px-4 md:px-16 mt-6 md:text-lg pb-6 gap-5'>
 			<div className='flex items-center gap-4 md:gap-10'>
 				<p className='text-T100 text-lg md:text-2xl font-bold'>Posts</p>
 			</div>
 			<ul className='flex flex-col gap-6'>
-				{allPosts.map((post: PostProps) => (
+				{posts.map((post: PostProps) => (
 					<LinkPost
 						key={post.id}
 						title={post.title}
