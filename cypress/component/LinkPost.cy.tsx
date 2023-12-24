@@ -1,5 +1,3 @@
-// cypress/integration/linkPost.spec.js
-
 import React from 'react';
 import { LinkPost } from '@/shared/components/LinkPost';
 import { mount } from 'cypress/react18';
