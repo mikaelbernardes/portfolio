@@ -16,10 +16,19 @@ function LinkPost({ title, createdAt, description, slug, tags }: LinkPostProps) 
 			<Link
 				href={`posts/${slug}`}
 				className="text-P100 font-bold text-base md:text-2xl cursor-pointer hover:decoration-dashed hover:underline transition-all duration-700 hover:decoration-P100"
+				data-cy='link-title'
 			>
 				{title}
 			</Link>
-			<span className="text-[8px] flex items-center gap-1 text-T100 md:text-sm"><FaClockRotateLeft />{createdAt}</span>
+			<span 
+				className="text-[8px] flex items-center gap-1 text-T100 md:text-sm"
+				data-cy='link-createdAt'
+			>
+				<FaClockRotateLeft 
+					data-cy='link-clock-icon'
+				/>
+				{createdAt}
+			</span>
 			<div className="flex gap-2">
 				{tags.map((tag, index) => (
 					<p
