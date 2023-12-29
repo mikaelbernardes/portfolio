@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-'use client';
+'use server';
 import { getPost } from '../../_services/notion';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
