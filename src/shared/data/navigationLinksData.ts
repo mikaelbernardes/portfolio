@@ -1,4 +1,8 @@
 
+interface navLinksProps {
+	name: string,
+	route: string
+}
 
 export const navLinks: navLinksProps[] = [
 	{
@@ -12,6 +16,10 @@ export const navLinks: navLinksProps[] = [
 	{
 		name: 'About me',
 		route: '/about'
+	},
+	{
+		name: 'Components',
+		route: '/components'
 	},
 	{
 		name: 'Projects',
