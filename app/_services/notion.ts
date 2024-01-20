@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
+const notion = new Client({ auth: process.env.NOTION_API_KEY  });
 const DATABASE_ID = process.env.DATABASE_ID || '';
 
 export async function getPosts() {
