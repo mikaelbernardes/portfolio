@@ -24,6 +24,9 @@ export default async function Post({
 		strong: ({ node, children }: any) => {
 			return <span className='text-P100 font-bold'>{children}</span>;
 		},
+		h1: ({ node, children }: any) => {
+			return <h1 className='text-T300 font-bold text-3xl mt-6 mb-6'>{children}</h1>;
+		},
 		code: ({ node, className, children, ...props }: any) => {
 			const match = /language-(\w+)/.exec(className || '');
 
