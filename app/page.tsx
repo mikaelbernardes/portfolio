@@ -5,14 +5,13 @@ import { PostProps } from '@/types/posts';
 import React from 'react';
 import { getPosts } from './_services/notion';
 import Link from 'next/link';
+import { useGetYearsOfExperience } from './_hooks/useGetYearsOfExperience';
 
 export default async function Home() {
 	
 	const posts = await getPosts();
-	const currentYear = new Date().getFullYear();
-	const currentMonth = new Date().getMonth() + 1;
 
-	const yearsOfExperience = currentYear - 2021 - (currentMonth < 4 ? 1 : 0);
+	const { yearsOfExperience } = useGetYearsOfExperience();
 
 	return (
 		<>

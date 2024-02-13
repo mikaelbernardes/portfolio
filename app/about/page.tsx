@@ -1,10 +1,8 @@
+import { useGetYearsOfExperience } from '../_hooks/useGetYearsOfExperience';
 
 export default function Aboute() {
 
-	const currentYear = new Date().getFullYear();
-	const currentMonth = new Date().getMonth() + 1;
-
-	const yearsOfExperience = currentYear - 2021 - (currentMonth < 4 ? 1 : 0);
+	const { yearsOfExperience } = useGetYearsOfExperience();
 
 	return (
 		<>
