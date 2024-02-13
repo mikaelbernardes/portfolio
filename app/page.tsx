@@ -6,6 +6,7 @@ import React from 'react';
 import { getPosts } from './_services/notion';
 import Link from 'next/link';
 import { useGetYearsOfExperience } from './_hooks/useGetYearsOfExperience';
+import { formatDate } from '@/utils/AddLeadingZero';
 
 export default async function Home() {
 	
@@ -43,7 +44,7 @@ export default async function Home() {
 							<LinkPost
 								key={post.id}
 								title={post.title}
-								createdAt={new Intl.DateTimeFormat('en-US').format(new Date(post.createdAt))}
+								createdAt={formatDate(new Intl.DateTimeFormat('en-US').format(new Date(post.createdAt)))}
 								slug={post.slug}
 								tags={post.tags}
 							/>
