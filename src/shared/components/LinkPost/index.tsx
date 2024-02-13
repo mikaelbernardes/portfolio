@@ -33,7 +33,7 @@ function LinkPost({ title, createdAt, description, slug, tags }: LinkPostProps) 
 				{tags.map((tag, index) => (
 					<p
 						key={index}
-						className={`text-[8px] flex items-center h-4 rounded-sm px-1 font-bold text-white ${tagColors[tag] || ''}`}
+						className={`text-[8px] flex items-center h-4 rounded-sm px-1 font-bold text-B100 ${tagColors[tag] || ''}`}
 					>
 						{tag}
 					</p>

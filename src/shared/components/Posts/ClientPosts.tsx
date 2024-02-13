@@ -27,7 +27,7 @@ export function ClientPosts({
 				<p className='text-T100 text-lg md:text-2xl font-bold'>Posts</p>
 			</div>
 			<input 
-				className='bg-B200 w-96 border border-B300 focus:outline-none text-T300 focus:border-2 focus:border-P100 px-2 rounded-md'
+				className='bg-B200 w-96 border-2 border-B300 focus:outline-none text-T300 focus:border-2 focus:border-P100 px-2 rounded-md'
 				type="text"
 				placeholder='Search posts...'
 				value={filterInput} 

@@ -36,10 +36,10 @@ export default async function Home() {
 			</main>
 			<section className="mt-6 px-8 md:px-16">
 				<p className='text-T300 text-sm md:text-lg'>Blog (Recent Posts)</p>
-				<ul className="flex flex-col gap-6 mt-6 mb-12">
+				<ul className="flex flex-col gap-6 mt-6 mb-11">
 					{posts
 						.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-						.slice(0, 3)
+						.slice(0, 4)
 						.map((post: PostProps) => (
 							<LinkPost
 								key={post.id}
