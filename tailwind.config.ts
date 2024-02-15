@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss';
-
 const config: Config = {
 	content: [
 		'./app/**/*.{js,ts,jsx,tsx}',
@@ -14,7 +13,7 @@ const config: Config = {
 				T100: '#BDC3CB',
 				T300: '#E1E8F0',
 				P100: '#7288FF'
-			}
+			},
 		}
 	},
 	plugins: [],

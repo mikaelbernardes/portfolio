@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use server';
-import { getPost } from '../../_services/notion';
+import { CSSProperties } from 'react';
+import { FaJava } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
-import gfm from 'remark-gfm';
-import rehypeStringify from 'rehype-stringify';
-import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { CSSProperties } from 'react';
-import React from 'react';
+import rehypeRaw from 'rehype-raw';
+import rehypeStringify from 'rehype-stringify';
+import gfm from 'remark-gfm';
+import { getPost } from '../../_services/notion';
 
 export default async function Post({
 	params,
@@ -51,6 +51,17 @@ export default async function Post({
 				<SyntaxHighlighter {...syntaxHighlighterProps as any}>
 					{String(children).replace(/\n$/, '')}
 				</SyntaxHighlighter>
+			);
+		},
+		ul: ({ node, children }: any) => {
+			return <ul className='list-none'>{children}</ul>;
+		},
+		li: ({ node, children }: any) => {
+			return (
+				<li className="flex items-center">
+					<FaJava className="text-[#f58219]"/>
+					<span className='ml-2'>{children}</span>
+				</li>
 			);
 		},
 	};
