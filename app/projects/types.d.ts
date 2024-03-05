@@ -3,7 +3,7 @@ export interface CardProjectsProps {
     name: string,
     initDate: string,
     finishDate: string,
-    principalLanguage: React.ElementType,
+    principalLanguage: React.ElementType[],
     description: string
 }
 

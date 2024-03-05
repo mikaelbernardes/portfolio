@@ -14,6 +14,9 @@ const config: Config = {
 				T300: '#E1E8F0',
 				P100: '#7288FF'
 			},
+			backgroundImage: {
+				'perfil': 'url(/perfil.jpg)'
+			}
 		}
 	},
 	plugins: [],
