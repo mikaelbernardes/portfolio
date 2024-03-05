@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY  });
+const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const DATABASE_ID = process.env.DATABASE_ID || '';
 
 export async function getPosts() {
@@ -19,8 +19,8 @@ export async function getPosts() {
 		const title = post.properties.title?.title?.[0]?.text.content || 'Untitled';
 		const slug = post.properties.slug?.rich_text?.[0]?.plain_text || 'no-slug';
 		const tags = post.properties.tags && post.properties.tags.multi_select
-      		? post.properties.tags.multi_select.map((tag) => tag.name)
-      		: [''];
+			? post.properties.tags.multi_select.map((tag) => tag.name)
+			: [''];
 		const description = post.properties.description?.rich_text?.[0]?.plain_text || '';
 
 		return {

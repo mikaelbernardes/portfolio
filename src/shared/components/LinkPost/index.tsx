@@ -42,7 +42,7 @@ function LinkPost({ title, createdAt, description, slug, tags }: LinkPostProps) 
 					</p>
 				))}
 			</div>
-			<p className="text-[10px] text-T300 md:text-base">{description}</p>
+			<p className="text-[10px] text-T300 md:text-base">{description?.substring(0, 160)}</p>
 		</Link>
 	);
 }

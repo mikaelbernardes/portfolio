@@ -23,7 +23,7 @@ export async function Posts( ) {
 			createdAt={new Date(post.createdAt).toLocaleDateString('pt-BR')}
 			slug={post.slug}
 			tags={post.tags}
-			description={post.description.substring(0, 160)}
+			description={post.description}
 		/>
 	}));
 
