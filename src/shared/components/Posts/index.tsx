@@ -9,6 +9,7 @@ type Post = {
 	slug: string;
 	tags: string[];
 	createdAt: string;
+	description: string;
 } 
 
 export async function Posts( ) {
@@ -22,6 +23,7 @@ export async function Posts( ) {
 			createdAt={new Date(post.createdAt).toLocaleDateString('pt-BR')}
 			slug={post.slug}
 			tags={post.tags}
+			description={post.description.substring(0, 160)}
 		/>
 	}));
 

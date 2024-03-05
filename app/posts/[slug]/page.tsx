@@ -2,15 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use server';
 import { CSSProperties } from 'react';
-import { FaJava } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeRaw from 'rehype-raw';
 import rehypeStringify from 'rehype-stringify';
 import gfm from 'remark-gfm';
-import { getPost } from '../../_services/notion';
-
+import { getPost, getPosts } from '../../_services/notion';
 export default async function Post({
 	params,
 }: {
@@ -19,6 +17,9 @@ export default async function Post({
 	};
 }) {
 	const post = await getPost(params.slug);
+	const posts = await getPosts();
+
+	const currentPost = posts.find(post => post.slug === params.slug);
 
 	const renderers = {
 		strong: ({ node, children }: any) => {
@@ -26,6 +27,9 @@ export default async function Post({
 		},
 		h1: ({ node, children }: any) => {
 			return <h1 className='text-T300 font-bold text-3xl mt-6 mb-6'>{children}</h1>;
+		},
+		h2:  ({ node, children }: any) => {
+			return <h2 className='text-T300 font-semibold text-2xl mt-4 mb-4'>{children}</h2>;
 		},
 		code: ({ node, className, children, ...props }: any) => {
 			const match = /language-(\w+)/.exec(className || '');
@@ -59,7 +63,6 @@ export default async function Post({
 		li: ({ node, children }: any) => {
 			return (
 				<li className="flex items-center">
-					<FaJava className="text-[#f58219]"/>
 					<span className='ml-2'>{children}</span>
 				</li>
 			);

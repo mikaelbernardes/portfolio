@@ -3,5 +3,6 @@ export interface PostProps {
     title: string;
     slug: string;
     createdAt: string;
-    tags: string[]
+    tags: string[];
+    description: string;
 }

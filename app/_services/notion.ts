@@ -21,12 +21,14 @@ export async function getPosts() {
 		const tags = post.properties.tags && post.properties.tags.multi_select
       		? post.properties.tags.multi_select.map((tag) => tag.name)
       		: [''];
+		const description = post.properties.description?.rich_text?.[0]?.plain_text || '';
 
 		return {
 			id: post.id,
 			title: title,
 			slug: slug,
 			tags: tags,
+			description: description,
 			createdAt: post.created_time,
 		};
 	});
@@ -55,8 +57,6 @@ export async function getPost(slug: string) {
 	const mdString = n2m.toMarkdownString(mdblocks);
 
 	const typedResponse = response as unknown as NotionDatabaseResponse;
-
-	console.log(pageId);
 
 	return {
 		title: typedResponse.results[0].properties.title.title[0].plain_text,

@@ -43,6 +43,7 @@ export interface Properties {
     tags: Tags;
     slug: Slug;
     title: Title;
+    description: Descriptions
   }
   
 export interface Tags {
@@ -50,6 +51,20 @@ export interface Tags {
     type: string;
     multi_select: MultiSelect[];
   }
+
+interface RichTextDescription {
+  type: string;
+  text: object;
+  annotations: object;
+  plain_text: string;
+  href: string | null
+}
+
+export interface Descriptions {
+  id: string;
+  type: string;
+  rich_text: RichTextDescription[]
+}
   
 export interface MultiSelect {
     id: string;
