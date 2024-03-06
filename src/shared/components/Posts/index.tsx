@@ -24,7 +24,8 @@ export async function Posts( ) {
 			slug={post.slug}
 			tags={post.tags}
 			description={post.description}
-		/>
+		/>,
+		tags: post.tags
 	}));
 
 	return <ClientPosts items={PostLinks}/>;
