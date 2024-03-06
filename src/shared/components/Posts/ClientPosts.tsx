@@ -1,6 +1,5 @@
 'use client';
-import { useState } from 'react';
-import { tagColors } from '../LinkPost/tagColors';
+import { useClientPosts } from './hooks/useClientPosts';
 
 type ClientPostsProps = {
 	items: {
@@ -13,24 +12,15 @@ type ClientPostsProps = {
 export function ClientPosts({
 	items
 }: ClientPostsProps) {
-	const [filterInput, setFilterInput] = useState('');
-	const [selectedTag, setSelectedTag] = useState('');
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setFilterInput(e.target.value);
-	};
-
-	const handleTagChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		setSelectedTag(e.target.value);
-	};
-
-	const filteredItems = items.filter((item) => {
-		const titleMatch = item.title.toLowerCase().includes(filterInput.toLowerCase());
-		const tagMatch = selectedTag === '' || item.tags.includes(selectedTag);
-		return titleMatch && tagMatch;
-	}).map((item) => item.content);
-
-	const tagKeys: string[] = Object.keys(tagColors);
+	const {
+		filterInput,
+		filteredItems,
+		handleChange,
+		handleTagChange,
+		selectedTag,
+		tagKeys
+	} = useClientPosts({items});
 
 	return (
 		<div className='flex flex-col items-center justify-center pt-4'>
