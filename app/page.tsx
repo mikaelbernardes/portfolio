@@ -1,7 +1,7 @@
 'use server';
 import { LinkPost } from '@/shared/components/LinkPost';
 import { socialLinksData } from '@/shared/data/socialLinksData';
-import { PostProps } from '@/types/posts';
+import { PostProps } from '@/types/PostsProps';
 import React from 'react';
 import { getPosts } from './_services/notion';
 import Link from 'next/link';

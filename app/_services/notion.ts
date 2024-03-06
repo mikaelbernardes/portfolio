@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client';
-import { NotionDatabaseResponse } from './types';
+import { NotionDatabaseResponse } from './notionProps';
 import { NotionToMarkdown } from 'notion-to-md';
 import dotenv from 'dotenv';
 

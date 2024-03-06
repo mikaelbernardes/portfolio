@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { tagColors } from '../../LinkPost/tagColors';
-import { ClientPostsProps } from '../ClientPost';
+import { ClientPostsProps } from '../../../../types/ClientPostProps';
 
 export function useClientPosts({items}: ClientPostsProps) {
 	const [filterInput, setFilterInput] = useState('');

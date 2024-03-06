@@ -1,4 +1,4 @@
-import { CardProjectsProps } from './types';
+import { CardProjectsProps } from './ProjectsProps';
 import { BiAlarm } from 'react-icons/bi';
 import { BiLogoTypescript, BiLogoTailwindCss } from 'react-icons/bi';
 import { SiNextdotjs, SiCypress } from 'react-icons/si';

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CardProjectsProps } from '../../types';
+import { CardProjectsProps } from '../../ProjectsProps';
 
 
 function ProjectCard({
