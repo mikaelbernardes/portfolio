@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use server';
+import { getPost, getPosts } from '@/app/_services/notion';
 import { CSSProperties } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -8,7 +9,7 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeRaw from 'rehype-raw';
 import rehypeStringify from 'rehype-stringify';
 import gfm from 'remark-gfm';
-import { getPost, getPosts } from '../../_services/notion';
+
 export default async function Post({
 	params,
 }: {

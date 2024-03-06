@@ -5,7 +5,7 @@ import { PostProps } from '@/types/PostsProps';
 import React from 'react';
 import { getPosts } from './_services/notion';
 import Link from 'next/link';
-import { useGetYearsOfExperience } from './_hooks/useGetYearsOfExperience';
+import { useGetYearsOfExperience } from '../utils/useGetYearsOfExperience';
 import { formatDate } from '@/utils/AddLeadingZero';
 
 export default async function Home() {

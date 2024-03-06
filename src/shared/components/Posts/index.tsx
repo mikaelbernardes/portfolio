@@ -1,6 +1,6 @@
 import { LinkPost } from '@/shared/components/LinkPost';
 import { PostProps } from '@/types/PostsProps';
-import { getPosts } from '../../../../app/_services/notion';
+import { getPosts } from '@/app/_services/notion';
 import { ClientPosts } from './ClientPosts';
 
 type Post = {

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useGetYearsOfExperience } from '../_hooks/useGetYearsOfExperience';
+import { useGetYearsOfExperience } from '../../utils/useGetYearsOfExperience';
 
 export default function Aboute() {
 
