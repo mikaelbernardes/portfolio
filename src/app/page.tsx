@@ -23,7 +23,9 @@ export default async function Home() {
 						socialLinksData.map((link, index) => (
 							<Link
 								href={link.link} 
-								about={link.alt} 
+								about={link.alt}
+								title={link.alt}
+								aria-label={link.alt}
 								key={index} 
 								className="text-lg md:text-3xl text-B300 hover:text-P100 cursor-pointer transition-all"
 								target='_blank'
@@ -36,7 +38,7 @@ export default async function Home() {
 			</main>
 			<section className="mt-6 px-8 md:px-16">
 				<p className='text-T300 text-sm md:text-lg'>Blog (Recent Posts)</p>
-				<ul className="flex flex-col gap-6 mt-6 mb-11">
+				<section className="flex flex-col gap-6 mt-6 mb-11">
 					{posts
 						.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
 						.slice(0, 4)
@@ -50,10 +52,10 @@ export default async function Home() {
 								description={post.description}
 							/>
 						))}
-				</ul>
+				</section>
 			</section>
 			<div className="w-full flex items-center justify-center">
-				<Link className='text-sm text-P100 uppercase animate-pulse' href={'/posts'}>clique para ver mais →</Link>
+				<Link className='text-sm text-T300 uppercase animate-pulse' href={'/posts'}>clique para ver mais →</Link>
 			</div>
 		</>
 	);

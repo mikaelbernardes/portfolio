@@ -48,9 +48,9 @@ export function ClientPosts({
 				</select>
 			</div>
 			<main className='w-full h-fit text-xs font-light text-T100 flex flex-col px-4 md:px-16 mt-6 md:text-lg pb-6 gap-5'>
-				<ul className='flex flex-col gap-6'>
+				<section className='flex flex-col gap-6'>
 					{filteredItems}
-				</ul>
+				</section>
 			</main>
 		</div>
 	);

@@ -6,6 +6,6 @@ export const tagColors: { [key: string ]: string } = {
 	'#software': 'bg-[#ADD8E6]',
 	'#patterns': 'bg-[#FFFF00]',
 	'#react': 'bg-[##61DAFB]',
-	'#java': 'bg-[#007396]',
+	'#java': 'bg-[#FF7337]',
 	'#typescript': 'bg-[#3178C6]'
 };
