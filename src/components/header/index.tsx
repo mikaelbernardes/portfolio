@@ -26,12 +26,12 @@ export function Header() {
 	}, []);
 
 	return (
-		<header className="sticky top-0 z-10 backdrop-blur-sm bg-background/80 border-b">
-			<div className="container mx-auto px-4 py-4 relative flex items-center">
-				<h1 className="text-2xl font-bold">Mikael Bernardes</h1>
+		<header className="sticky top-0 z-10 h-16 backdrop-blur-sm bg-background/80 border-b">
+			<div className="container h-full mx-auto px-4 py-4 relative flex items-center">
+				<h1 className="text-2xl font-bold hidden sm:block">Mikael Bernardes</h1>
 				<Button
 					variant="outline"
-					className="absolute left-1/2 transform -translate-x-1/2"
+					className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
 					onClick={() => setOpen(true)}>
 					<p className="text-sm text-muted-foreground">
 						Click here or press{" "}
