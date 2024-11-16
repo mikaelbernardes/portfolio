@@ -1,9 +1,21 @@
-import { getPosts } from "../_notion";
+"use client";
+import { useEffect } from "react";
 
-export default async function Page() {
-	const posts = await getPosts();
+export default function Page() {
+	useEffect(() => {
+		const fetchData = async () => {
+			const response = await fetch("/api/post", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
 
-	console.log(posts);
+			const data = await response.json();
+			console.log(data);
+		};
+		fetchData();
+	}, []);
 
 	return <></>;
 }

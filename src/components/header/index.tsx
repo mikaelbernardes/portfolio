@@ -12,7 +12,9 @@ import { DialogTitle } from "../ui/dialog";
 import { Button } from "../ui/button";
 
 export function Header() {
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState<boolean>(false);
+	const [searchPost, setSearchPost] = useState<string>("");
+	const [allPost, setAllPost] = useState<Post[]>([]);
 
 	useEffect(() => {
 		const down = (e: KeyboardEvent) => {
@@ -22,6 +24,20 @@ export function Header() {
 			}
 		};
 		document.addEventListener("keydown", down);
+
+		const fetchData = async () => {
+			const response = await fetch("/api/post", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+
+			const data = await response.json();
+			setAllPost(data);
+		};
+
+		fetchData();
 		return () => document.removeEventListener("keydown", down);
 	}, []);
 
@@ -48,9 +64,9 @@ export function Header() {
 						<DialogTitle>{}</DialogTitle>
 						<CommandEmpty>No results found.</CommandEmpty>
 						<CommandGroup heading="Suggestions">
-							<CommandItem>Calendar</CommandItem>
-							<CommandItem>Search Emoji</CommandItem>
-							<CommandItem>Calculator</CommandItem>
+							{allPost.map((post) => (
+								<CommandItem key={post.id}>{post.title}</CommandItem>
+							))}
 						</CommandGroup>
 					</CommandList>
 				</CommandDialog>
