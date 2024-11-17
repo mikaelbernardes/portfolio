@@ -4,6 +4,7 @@ interface Post {
 	id: string;
 	isBlog: boolean;
 	isProjectKey: boolean;
+	isProfessionalExperience: boolean;
 	slug: string;
 	tags: string[];
 	title: string;

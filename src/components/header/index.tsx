@@ -64,9 +64,28 @@ export function Header() {
 						<DialogTitle>{}</DialogTitle>
 						<CommandEmpty>No results found.</CommandEmpty>
 						<CommandGroup heading="Suggestions">
-							{allPost.map((post) => (
-								<CommandItem key={post.id}>{post.title}</CommandItem>
-							))}
+							{allPost.map((post) => {
+								let tag = "";
+
+								if (post.isBlog) {
+									tag = "post";
+								} else if (!post.isBlog) {
+									tag = "project";
+								} else if (post.isProfessionalExperience) {
+									tag = "professional experience";
+								}
+
+								return (
+									<CommandItem
+										key={post.id}
+										className="w-full flex items-center justify-between">
+										<p>{post.title}</p>
+										<p className="uppercase text-xs text-muted-foreground">
+											{tag}
+										</p>
+									</CommandItem>
+								);
+							})}
 						</CommandGroup>
 					</CommandList>
 				</CommandDialog>

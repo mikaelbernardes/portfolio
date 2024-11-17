@@ -47,11 +47,12 @@ interface Properties {
 	slug: Slug;
 	title: Title;
 	description: Descriptions;
-	isBlog: IsBlogAndIsProjectKey;
-	isProjectKey: IsBlogAndIsProjectKey;
+	isBlog: BooleanPropertie;
+	isProjectKey: BooleanPropertie;
+	isProfessionalExperience: BooleanPropertie;
 }
 
-interface IsBlogAndIsProjectKey {
+interface BooleanPropertie {
 	checkbox: boolean;
 	id: string;
 	type: string;
