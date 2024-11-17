@@ -1,5 +1,5 @@
 "use client";
-import { ProjectCard } from "@/components/project-card";
+import { PostCard } from "@/components/post-card";
 import { useEffect, useState } from "react";
 
 export default function Page() {
@@ -23,10 +23,10 @@ export default function Page() {
 	return (
 		<div className="container mx-auto px-4 py-8 flex flex-col gap-4 items-center">
 			{posts
-				.filter((post) => !post.isBlog)
+				.filter((post) => post.isBlog)
 				.map((post) => (
-					<ProjectCard
-						project={post}
+					<PostCard
+						post={post}
 						key={post.id}
 					/>
 				))}
