@@ -67,7 +67,9 @@ export function PostCard({ post }: Props) {
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="flex flex-col gap-4">
-				<p className="text-sm text-muted-foreground">{post.description}</p>
+				<p className="text-sm text-muted-foreground">
+					{post.description.substring(0, 200)}
+				</p>
 				<div className="flex gap-2">
 					{post.tags.map((t) => (
 						<Badge

@@ -1,4 +1,5 @@
 "use client";
+import { PostCard } from "@/components/post-card";
 import { ProjectCard } from "@/components/project-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +22,7 @@ import {
 	Server,
 	Zap,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const coreExpertises = [
@@ -69,7 +71,7 @@ const coreExpertises = [
 ];
 
 export default function Page() {
-	const [projectKey, setProjectKey] = useState<Post[]>([]);
+	const [posts, setposts] = useState<Post[]>([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -81,10 +83,12 @@ export default function Page() {
 			});
 
 			const data = await response.json();
-			setProjectKey(data);
+			setposts(data);
 		};
 		fetchData();
 	}, []);
+
+	const { push } = useRouter();
 
 	return (
 		<div className="min-h-screen bg-background text-foreground scroll-auto">
@@ -133,14 +137,44 @@ export default function Page() {
 					id="projects"
 					className="space-y-4">
 					<div className="flex items-center justify-between">
-						<h3 className="text-2xl font-semibold">Key Projects</h3>
-						<Button>See all</Button>
+						<h3 className="text-2xl font-semibold">Blog</h3>
+						<Button
+							variant="outline"
+							onClick={() => push("/posts")}>
+							See all posts
+						</Button>
 					</div>
 					<div className="grid gap-6 md:grid-cols-2">
-						{projectKey
+						{posts
+							.filter((post) => post.isBlog)
+							.slice(0, 2)
+							.map((post) => (
+								<PostCard
+									post={post}
+									key={post.id}
+								/>
+							))}
+					</div>
+				</section>
+
+				<section
+					id="projects"
+					className="space-y-4">
+					<div className="flex items-center justify-between">
+						<h3 className="text-2xl font-semibold">Key Projects</h3>
+						<Button
+							variant="outline"
+							onClick={() => push("/projects")}>
+							See all projects
+						</Button>
+					</div>
+					<div className="grid gap-6 md:grid-cols-2">
+						{posts
 							.filter((project) => project.isProjectKey)
+							.slice(-2)
 							.map((project) => (
 								<ProjectCard
+									isProfessionalExperience={false}
 									project={project}
 									key={project.id}
 								/>
@@ -153,61 +187,15 @@ export default function Page() {
 					className="space-y-4">
 					<h3 className="text-2xl font-semibold">Professional Experience</h3>
 					<div className="space-y-6">
-						<Card>
-							<CardHeader>
-								<CardTitle>Principal Backend Engineer</CardTitle>
-								<CardDescription>
-									TechGiant Corp. | 2018 - Present
-								</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-									<li>
-										Lead architect for the company's core distributed systems
-									</li>
-									<li>
-										Implemented a service mesh architecture, improving system
-										reliability and observability
-									</li>
-									<li>
-										Reduced infrastructure costs by 40% through cloud
-										optimization and serverless adoption
-									</li>
-									<li>
-										Mentored senior engineers and established backend
-										development best practices
-									</li>
-								</ul>
-							</CardContent>
-						</Card>
-						<Card>
-							<CardHeader>
-								<CardTitle>Senior Software Engineer</CardTitle>
-								<CardDescription>
-									FinTech Innovations | 2014 - 2018
-								</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-									<li>
-										Designed and implemented a high-frequency trading system
-										processing 100,000+ orders per second
-									</li>
-									<li>
-										Optimized database queries, resulting in a 70% reduction in
-										average query time
-									</li>
-									<li>
-										Led the migration from monolith to microservices
-										architecture
-									</li>
-									<li>
-										Implemented robust security measures, ensuring SOC 2 and PCI
-										DSS compliance
-									</li>
-								</ul>
-							</CardContent>
-						</Card>
+						{posts
+							.filter((post) => post.isProfessionalExperience)
+							.map((post) => (
+								<ProjectCard
+									isProfessionalExperience
+									project={post}
+									key={post.id}
+								/>
+							))}
 					</div>
 				</section>
 

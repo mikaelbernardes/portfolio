@@ -9,9 +9,10 @@ import {
 
 interface Props {
 	project: Post;
+	isProfessionalExperience: boolean;
 }
 
-export function ProjectCard({ project }: Props) {
+export function ProjectCard({ project, isProfessionalExperience }: Props) {
 	return (
 		<Card>
 			<CardHeader>
@@ -19,7 +20,9 @@ export function ProjectCard({ project }: Props) {
 				<CardDescription>{project.description}</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<p className="mb-2">Technical highlights:</p>
+				{!isProfessionalExperience && (
+					<p className="mb-2">Technical highlights:</p>
+				)}
 				<ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
 					{project.tags.map((i) => (
 						<li key={i}>{i}</li>

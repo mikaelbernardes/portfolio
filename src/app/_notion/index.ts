@@ -24,7 +24,8 @@ export async function getPosts() {
 			post.properties.description?.rich_text?.[0]?.plain_text || "";
 		const isBlog = post.properties.isBlog.checkbox;
 		const isProjectKey = post.properties.isProjectKey.checkbox;
-		const isProfessionalExperience = post.properties.isProjectKey.checkbox;
+		const isProfessionalExperience =
+			post.properties.isProfessionalExperience.checkbox;
 
 		return {
 			id: post.id,
