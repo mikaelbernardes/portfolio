@@ -23,6 +23,7 @@ export async function getPosts() {
 		const description =
 			post.properties.description?.rich_text?.[0]?.plain_text || "";
 		const isBlog = post.properties.isBlog.checkbox;
+		const isProjectKey = post.properties.isProjectKey.checkbox;
 
 		return {
 			id: post.id,
@@ -32,6 +33,7 @@ export async function getPosts() {
 			createdAt: post.created_time,
 			description: description,
 			isBlog,
+			isProjectKey,
 		};
 	});
 }

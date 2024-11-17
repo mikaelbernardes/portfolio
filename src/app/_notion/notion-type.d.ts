@@ -47,10 +47,11 @@ interface Properties {
 	slug: Slug;
 	title: Title;
 	description: Descriptions;
-	isBlog: IsBlog;
+	isBlog: IsBlogAndIsProjectKey;
+	isProjectKey: IsBlogAndIsProjectKey;
 }
 
-interface IsBlog {
+interface IsBlogAndIsProjectKey {
 	checkbox: boolean;
 	id: string;
 	type: string;

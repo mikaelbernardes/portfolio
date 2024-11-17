@@ -1,4 +1,5 @@
 "use client";
+import { ProjectCard } from "@/components/project-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ import {
 	Server,
 	Zap,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const coreExpertises = [
 	{
@@ -67,6 +69,23 @@ const coreExpertises = [
 ];
 
 export default function Page() {
+	const [projectKey, setProjectKey] = useState<Post[]>([]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const response = await fetch("/api/post", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+
+			const data = await response.json();
+			setProjectKey(data);
+		};
+		fetchData();
+	}, []);
+
 	return (
 		<div className="min-h-screen bg-background text-foreground scroll-auto">
 			<main className="container mx-auto px-4 py-8 space-y-16">
@@ -118,48 +137,14 @@ export default function Page() {
 						<Button>See all</Button>
 					</div>
 					<div className="grid gap-6 md:grid-cols-2">
-						<Card>
-							<CardHeader>
-								<CardTitle>Global Payment Processing Platform</CardTitle>
-								<CardDescription>
-									Architected a system handling 10,000+ transactions per second
-								</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<p className="mb-2">Technical highlights:</p>
-								<ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-									<li>Microservices architecture using Go and gRPC</li>
-									<li>Distributed caching with Redis Cluster</li>
-									<li>Real-time fraud detection using machine learning</li>
-									<li>Multi-region deployment on AWS for high availability</li>
-									<li>Achieved 99.999% uptime and sub-100ms response times</li>
-								</ul>
-							</CardContent>
-						</Card>
-						<Card>
-							<CardHeader>
-								<CardTitle>IoT Data Processing Pipeline</CardTitle>
-								<CardDescription>
-									Built a system ingesting and processing 1TB+ of data daily
-									from millions of IoT devices
-								</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<p className="mb-2">Technical highlights:</p>
-								<ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-									<li>Kafka Streams for real-time data processing</li>
-									<li>ClickHouse for high-speed analytics queries</li>
-									<li>Kubernetes for orchestrating 100+ microservices</li>
-									<li>
-										Implemented a custom sharding solution for horizontal
-										scaling
-									</li>
-									<li>
-										Reduced data processing latency from minutes to seconds
-									</li>
-								</ul>
-							</CardContent>
-						</Card>
+						{projectKey
+							.filter((project) => project.isProjectKey)
+							.map((project) => (
+								<ProjectCard
+									project={project}
+									key={project.id}
+								/>
+							))}
 					</div>
 				</section>
 
