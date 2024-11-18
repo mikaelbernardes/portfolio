@@ -7,6 +7,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coy } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useEffect, useState, type CSSProperties } from "react";
 import { useParams } from "next/navigation";
+import { Skeleton } from "../ui/skeleton";
 
 export function SlugPage() {
 	const params = useParams<{ slug: string }>();
@@ -14,6 +15,7 @@ export function SlugPage() {
 		content: "",
 		title: "",
 	});
+	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -26,6 +28,7 @@ export function SlugPage() {
 
 			const data = await response.json();
 			setPost(data);
+			setLoading(false);
 		};
 		fetchData();
 	}, [params]);
@@ -174,12 +177,23 @@ export function SlugPage() {
 
 	return (
 		<main className="xs:px-5 sm:px-20 md:px-32 lg:px-56 xl:px-72 pb-4 xl:pb-12">
-			<ReactMarkdown
-				remarkPlugins={[gfm]}
-				rehypePlugins={[rehypeRaw, rehypeStringify]}
-				components={stylesForMarkdown as unknown as Partial<Components>}>
-				{post.content}
-			</ReactMarkdown>
+			{loading ? (
+				<div className="flex flex-col w-full h-fit gap-4 my-4">
+					{Array.from({ length: 12 }).map((_, index) => (
+						<Skeleton
+							key={index}
+							className="w-full h-10"
+						/>
+					))}
+				</div>
+			) : (
+				<ReactMarkdown
+					remarkPlugins={[gfm]}
+					rehypePlugins={[rehypeRaw, rehypeStringify]}
+					components={stylesForMarkdown as unknown as Partial<Components>}>
+					{post.content}
+				</ReactMarkdown>
+			)}
 		</main>
 	);
 }

@@ -11,6 +11,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
 	BarChart,
 	Cloud,
@@ -22,6 +23,7 @@ import {
 	Server,
 	Zap,
 } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -72,6 +74,7 @@ const coreExpertises = [
 
 export default function Page() {
 	const [posts, setposts] = useState<Post[]>([]);
+	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -84,6 +87,7 @@ export default function Page() {
 
 			const data = await response.json();
 			setposts(data);
+			setLoading(false);
 		};
 		fetchData();
 	}, []);
@@ -145,15 +149,22 @@ export default function Page() {
 						</Button>
 					</div>
 					<div className="grid gap-6 md:grid-cols-2">
-						{posts
-							.filter((post) => post.isBlog)
-							.slice(0, 2)
-							.map((post) => (
-								<PostCard
-									post={post}
-									key={post.id}
-								/>
-							))}
+						{loading ? (
+							<div className="flex gap-6">
+								<Skeleton className="min-w-[46rem] h-56" />
+								<Skeleton className="min-w-[46rem] h-56" />
+							</div>
+						) : (
+							posts
+								.filter((post) => post.isBlog)
+								.slice(0, 2)
+								.map((post) => (
+									<PostCard
+										post={post}
+										key={post.id}
+									/>
+								))
+						)}
 					</div>
 				</section>
 
@@ -169,16 +180,23 @@ export default function Page() {
 						</Button>
 					</div>
 					<div className="grid gap-6 md:grid-cols-2">
-						{posts
-							.filter((project) => project.isProjectKey)
-							.slice(-2)
-							.map((project) => (
-								<ProjectCard
-									isProfessionalExperience={false}
-									project={project}
-									key={project.id}
-								/>
-							))}
+						{loading ? (
+							<div className="flex gap-6">
+								<Skeleton className="min-w-[46rem] h-56" />
+								<Skeleton className="min-w-[46rem] h-56" />
+							</div>
+						) : (
+							posts
+								.filter((project) => project.isProjectKey)
+								.slice(-2)
+								.map((project) => (
+									<ProjectCard
+										isProfessionalExperience={false}
+										project={project}
+										key={project.id}
+									/>
+								))
+						)}
 					</div>
 				</section>
 
@@ -187,15 +205,21 @@ export default function Page() {
 					className="space-y-4">
 					<h3 className="text-2xl font-semibold">Professional Experience</h3>
 					<div className="space-y-6">
-						{posts
-							.filter((post) => post.isProfessionalExperience)
-							.map((post) => (
-								<ProjectCard
-									isProfessionalExperience
-									project={post}
-									key={post.id}
-								/>
-							))}
+						{loading ? (
+							<div className="flex gap-6">
+								<Skeleton className="w-full h-56" />
+							</div>
+						) : (
+							posts
+								.filter((post) => post.isProfessionalExperience)
+								.map((post) => (
+									<ProjectCard
+										isProfessionalExperience
+										project={post}
+										key={post.id}
+									/>
+								))
+						)}
 					</div>
 				</section>
 
@@ -226,27 +250,33 @@ export default function Page() {
 					className="space-y-4">
 					<h3 className="text-2xl font-semibold">Contact</h3>
 					<div className="flex flex-wrap gap-4">
-						<Button variant="outline">
-							<Mail className="mr-2 h-4 w-4" />
-							Email
-						</Button>
-						<Button variant="outline">
-							<Linkedin className="mr-2 h-4 w-4" />
-							LinkedIn
-						</Button>
-						<Button variant="outline">
-							<Github className="mr-2 h-4 w-4" />
-							GitHub
-						</Button>
+						<Link
+							href="mailto:mikaelbernardes2022@gmail.com"
+							target="_blank">
+							<Button variant="outline">
+								<Mail className="mr-2 h-4 w-4" />
+								Email
+							</Button>
+						</Link>
+						<Link
+							href="https://www.linkedin.com/in/bernardesmikael/"
+							target="_blank">
+							<Button variant="outline">
+								<Linkedin className="mr-2 h-4 w-4" />
+								LinkedIn
+							</Button>
+						</Link>
+						<Link
+							href="https://github.com/mikaelbernardes"
+							target="_blank">
+							<Button variant="outline">
+								<Github className="mr-2 h-4 w-4" />
+								GitHub
+							</Button>
+						</Link>
 					</div>
 				</section>
 			</main>
-
-			<footer className="border-t">
-				<div className="container mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
-					© 2023 Mikael Bernardes. All rights reserved.
-				</div>
-			</footer>
 		</div>
 	);
 }

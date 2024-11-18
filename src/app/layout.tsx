@@ -27,6 +27,11 @@ export default function RootLayout({
 				cz-shortcut-listen="true">
 				<Header />
 				{children}
+				<footer className="border-t">
+					<div className="container mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
+						© 2023 Mikael Bernardes. All rights reserved.
+					</div>
+				</footer>
 			</body>
 		</html>
 	);

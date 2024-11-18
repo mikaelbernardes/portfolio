@@ -11,8 +11,10 @@ import {
 } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/project-card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Page() {
+	const [loading, setLoading] = useState<boolean>(true);
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const postsPerPage = 4;
@@ -28,6 +30,7 @@ export default function Page() {
 
 			const data = await response.json();
 			setPosts(data);
+			setLoading(false);
 		};
 		fetchData();
 	}, []);
@@ -39,16 +42,23 @@ export default function Page() {
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
 	const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
-
+	console.log(loading);
 	return (
 		<div className="container mx-auto px-4 py-8 flex flex-col gap-4 items-center">
-			{currentPosts.map((post) => (
-				<ProjectCard
-					isProfessionalExperience={false}
-					project={post}
-					key={post.id}
-				/>
-			))}
+			{loading
+				? Array.from({ length: 4 }).map((_, index) => (
+						<Skeleton
+							key={index}
+							className="min-w-[38rem] h-56"
+						/>
+					))
+				: currentPosts.map((post) => (
+						<ProjectCard
+							isProfessionalExperience={false}
+							project={post}
+							key={post.id}
+						/>
+					))}
 			<Pagination>
 				<PaginationContent>
 					<PaginationItem>
