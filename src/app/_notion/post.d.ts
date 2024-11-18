@@ -9,3 +9,8 @@ interface Post {
 	tags: string[];
 	title: string;
 }
+
+interface PostContent {
+	title: string;
+	content: string;
+}
