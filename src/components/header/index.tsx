@@ -10,10 +10,11 @@ import {
 } from "../ui/command";
 import { DialogTitle } from "../ui/dialog";
 import { Button } from "../ui/button";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function Header() {
 	const [open, setOpen] = useState<boolean>(false);
-	const [searchPost, setSearchPost] = useState<string>("");
 	const [allPost, setAllPost] = useState<Post[]>([]);
 
 	useEffect(() => {
@@ -41,10 +42,16 @@ export function Header() {
 		return () => document.removeEventListener("keydown", down);
 	}, []);
 
+	const { push } = useRouter();
+
 	return (
 		<header className="sticky top-0 z-10 h-16 backdrop-blur-sm bg-background/80 border-b">
 			<div className="container h-full mx-auto px-4 py-4 relative flex items-center">
-				<h1 className="text-2xl font-bold hidden sm:block">Mikael Bernardes</h1>
+				<Link
+					href="/"
+					className="text-2xl font-bold hidden sm:block">
+					Mikael Bernardes
+				</Link>
 				<Button
 					variant="outline"
 					className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
@@ -64,28 +71,40 @@ export function Header() {
 						<DialogTitle>{}</DialogTitle>
 						<CommandEmpty>No results found.</CommandEmpty>
 						<CommandGroup heading="Suggestions">
-							{allPost.map((post) => {
-								let tag = "";
+							{allPost
+								.filter((post) => !post.isProfessionalExperience)
+								.map((post) => {
+									let tag = "";
 
-								if (post.isBlog) {
-									tag = "post";
-								} else if (!post.isBlog) {
-									tag = "project";
-								} else if (post.isProfessionalExperience) {
-									tag = "professional experience";
-								}
+									if (post.isBlog) {
+										tag = "post";
+									} else {
+										tag = "project";
+									}
 
-								return (
-									<CommandItem
-										key={post.id}
-										className="w-full flex items-center justify-between">
-										<p>{post.title}</p>
-										<p className="uppercase text-xs text-muted-foreground">
-											{tag}
-										</p>
-									</CommandItem>
-								);
-							})}
+									const link = post.isBlog
+										? `/posts/${post.slug}`
+										: `/projects/${post.slug}`;
+
+									return (
+										<CommandItem
+											key={post.id}
+											className="w-full cursor-pointer flex items-center justify-between">
+											{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+											<div
+												onClick={() => {
+													push(link);
+													setOpen(false);
+												}}
+												className="w-full h-fit flex items-center justify-between">
+												<p>{post.title}</p>
+												<p className="uppercase text-xs text-muted-foreground">
+													{tag}
+												</p>
+											</div>
+										</CommandItem>
+									);
+								})}
 						</CommandGroup>
 					</CommandList>
 				</CommandDialog>

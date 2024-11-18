@@ -7,6 +7,7 @@ import {
 	CardTitle,
 } from "../ui/card";
 import { Badge } from "../ui/badge";
+import { useRouter } from "next/navigation";
 
 interface Props {
 	post: Post;
@@ -57,8 +58,12 @@ export function PostCard({ post }: Props) {
 			break;
 	}
 
+	const { push } = useRouter();
+
 	return (
-		<Card className="w-full max-w-[46rem]">
+		<Card
+			className="w-full max-w-[46rem] cursor-pointer"
+			onClick={() => push(`/posts/${post.slug}`)}>
 			<CardHeader>
 				<CardTitle>{post.title}</CardTitle>
 				<CardDescription>

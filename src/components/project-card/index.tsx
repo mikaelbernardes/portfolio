@@ -6,6 +6,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "../ui/card";
+import { useRouter } from "next/navigation";
 
 interface Props {
 	project: Post;
@@ -13,8 +14,14 @@ interface Props {
 }
 
 export function ProjectCard({ project, isProfessionalExperience }: Props) {
+	const { push } = useRouter();
+
 	return (
-		<Card>
+		<Card
+			className={`${isProfessionalExperience ? "" : "cursor-pointer"}`}
+			onClick={() =>
+				isProfessionalExperience ? {} : push(`/projects/${project.slug}`)
+			}>
 			<CardHeader>
 				<CardTitle>{project.title}</CardTitle>
 				<CardDescription>{project.description}</CardDescription>
