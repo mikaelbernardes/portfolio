@@ -228,6 +228,7 @@ export default function Page() {
 					<div className="flex flex-wrap gap-2">
 						<Badge variant="secondary">Java</Badge>
 						<Badge variant="secondary">Node.js</Badge>
+						<Badge variant="secondary">Nest.js</Badge>
 						<Badge variant="secondary">PostgreSQL</Badge>
 						<Badge variant="secondary">MongoDB</Badge>
 						<Badge variant="secondary">Redis</Badge>
