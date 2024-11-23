@@ -18,40 +18,40 @@ export function PostCard({ post }: Props) {
 
 	switch (new Date(post.createdAt).getMonth()) {
 		case 0:
-			month = "Janeiro";
+			month = "January";
 			break;
 		case 1:
-			month = "Fevereiro";
+			month = "February";
 			break;
 		case 2:
-			month = "Março";
+			month = "March";
 			break;
 		case 3:
-			month = "Abril";
+			month = "April";
 			break;
 		case 4:
-			month = "Maio";
+			month = "May";
 			break;
 		case 5:
-			month = "Junho";
+			month = "June";
 			break;
 		case 6:
-			month = "Julho";
+			month = "July";
 			break;
 		case 7:
-			month = "Agosto";
+			month = "August";
 			break;
 		case 8:
-			month = "Setembro";
+			month = "September";
 			break;
 		case 9:
-			month = "Outubro";
+			month = "October";
 			break;
 		case 10:
-			month = "Novembro";
+			month = "November";
 			break;
 		case 11:
-			month = "Dezembro";
+			month = "December";
 			break;
 		default:
 			month = "";

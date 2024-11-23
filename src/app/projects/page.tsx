@@ -44,7 +44,7 @@ export default function Page() {
 	const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 	console.log(loading);
 	return (
-		<div className="container mx-auto px-4 py-8 flex flex-col gap-4 items-center">
+		<div className="container mx-auto min-h-[85vh] px-4 py-8 flex flex-col gap-4 items-center">
 			{loading
 				? Array.from({ length: 4 }).map((_, index) => (
 						<Skeleton

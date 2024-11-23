@@ -4,13 +4,7 @@ import { ProjectCard } from "@/components/project-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
 	BarChart,
@@ -31,9 +25,9 @@ const coreExpertises = [
 	{
 		id: 1,
 		icon: Server,
-		title: "Distributed Systems",
+		title: "Design Patterns and Software Architecture",
 		content:
-			"Design and implementation of highly available and fault-tolerant distributed systems using technologies like Apache Kafka, etcd, and Consul.",
+			"Application of GoF design patterns, as well as Clean Architecture and SOLID principles, to ensure code maintainability and scalability.",
 	},
 	{
 		id: 2,
@@ -47,28 +41,28 @@ const coreExpertises = [
 		icon: Cloud,
 		title: "Cloud Architecture",
 		content:
-			"Extensive experience with cloud platforms (AWS, GCP, Azure), focusing on serverless architectures, containerization, and infrastructure-as-code.",
+			"Extensive experience with cloud platforms (AWS, Azure), focusing on serverless architectures, containerization, and infrastructure-as-code.",
 	},
 	{
 		id: 4,
 		icon: Lock,
 		title: "Security & Compliance",
 		content:
-			"Implementation of robust security measures, including encryption, authentication systems, and compliance with standards like GDPR and PCI-DSS.",
+			"Implementation of robust security measures, including encryption, authentication systems, and compliance with standards like LGPD, GDPR and PCI-DSS.",
 	},
 	{
 		id: 5,
 		icon: Zap,
-		title: "High-Performance Computing",
+		title: "Test Driven Development (TDD)",
 		content:
-			"Development of high-throughput, low-latency systems capable of processing millions of transactions per second using technologies like CUDA and Apache Spark.",
+			"Implementation of automated tests in the backend, ensuring code quality from the initial phase. I also apply good test design practices for high coverage and reliability.",
 	},
 	{
 		id: 6,
 		icon: BarChart,
-		title: "Data Engineering",
+		title: "Software Architecture and Engineering",
 		content:
-			"Design and implementation of data pipelines, ETL processes, and real-time analytics systems using tools like Apache Airflow and Apache Flink.",
+			"Specialist in designing and implementing robust and scalable backend systems, using solid software engineering principles and good architectural practices.",
 	},
 ];
 
